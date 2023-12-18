@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router";
+import { useEffect } from "react";
+import Home from "./pages/Home";
+import "./styles/colors.css";
+import StatifyNav from "./components/mainNav";
 
 function App() {
+  useEffect(() => {
+    document.body.classList.add("statify-colors");
+    return () => {
+      document.body.classList.remove("statify-colors");
+    };
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <StatifyNav />
+      <div>
+        <Routes>
+          <Route path="/" element={<Home /> } />
+          <Route path="/home" element={<Navigate to="/" />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 

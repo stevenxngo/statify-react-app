@@ -1,0 +1,10 @@
+:root {
+    --white: #FFFFFF;
+    --black: #191414;
+    --green: #1DB954;
+}
+
+.statify-colors {
+    background-color: var(--black);
+    color: var(--white);
+}
