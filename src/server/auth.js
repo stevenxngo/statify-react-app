@@ -1,5 +1,4 @@
 import axios from "axios";
-import qs from "qs";
 
 const request = axios.create({
   withCredentials: true,
@@ -9,6 +8,12 @@ const clientId = process.env.REACT_APP_CLIENT_ID;
 const redirectUri = process.env.REACT_APP_REDIRECT_URI;
 const scope = "user-top-read user-read-recently-played";
 const spotifyAccountURL = "https://accounts.spotify.com";
+
+const headers = {
+  headers: {
+    "Content-Type": "application/x-www-form-urlencoded",
+  },
+};
 
 const generateRandomString = (length) => {
   const possible =
@@ -30,20 +35,19 @@ const base64encode = (input) => {
     .replace(/\//g, "_");
 };
 
-const buildAuthorizationUrl = (codeChallenge, state) => {
+const buildAuthUrl = (codeChallenge, state) => {
   const params = {
     response_type: "code",
     client_id: clientId,
-    scope,
-    code_challenge_method: "S256",
-    codeChallenge,
+    scope: scope,
     redirect_uri: redirectUri,
-    state,
+    state: state,
+    code_challenge_method: "S256",
+    code_challenge: codeChallenge,
   };
 
   const authUrl = new URL(`${spotifyAccountURL}/authorize`);
   authUrl.search = new URLSearchParams(params).toString();
-
   return authUrl.toString();
 };
 
@@ -56,7 +60,7 @@ export const login = async () => {
   const state = generateRandomString(16);
   window.localStorage.setItem("state", state);
 
-  const authUrl = buildAuthorizationUrl(codeChallenge, state);
+  const authUrl = buildAuthUrl(codeChallenge, state);
   window.location.href = authUrl.toString();
 };
 
@@ -71,58 +75,58 @@ function getURLParams() {
 
 export const retrieveCode = async () => {
   const { code, state, error } = getURLParams();
-  // console.log("Code:", code);
-  // console.log("State:", state);
-  // console.log("Error:", error);
-  if (error) {
-    window.history.replaceState({}, document.title, "/");
-    window.localStorage.removeItem("state");
-    console.log(error);
-    throw new Error(error);
-  } else if (!code || !state) {
+  if (!code || !state) {
     return;
   }
+  else if (error) {
+    window.history.replaceState({}, document.title, "/");
+    window.localStorage.removeItem("state");
+    console.log("Error retrieving code:");
+    console.log(error);
+    // throw new Error(error);
+    // TODO: Handle redirect error
+    return;
+  }
+
   if (state !== window.localStorage.getItem("state")) {
     window.localStorage.removeItem("state");
     window.history.replaceState({}, document.title, "/");
     throw new Error("State mismatch");
   }
   window.localStorage.removeItem("state");
-  // window.history.replaceState({}, document.title, "/");
-  // await retrieveToken(code);
+  await requestToken(code);
+  window.history.replaceState({}, document.title, "/");
 };
 
-export const retrieveToken = async () => {
+const saveTokenData = (data) => {
+  const { access_token, refresh_token, expires_in } = data;
+  const expirationTime = new Date().getTime() + expires_in * 1000;
+  localStorage.setItem("access_token", access_token);
+  localStorage.setItem("refresh_token", refresh_token);
+  localStorage.setItem("expiration_time", expirationTime);
+}
+
+export const requestToken = async () => {
   const code = getURLParams().code;
   const codeVerifier = localStorage.getItem("code_verifier");
 
-  console.log("Code verifier:", codeVerifier);
-  console.log("Client ID:", clientId);
-  console.log("Redirect URI:", redirectUri);
-  console.log("Code:", code);
-
-  const requestData = qs.stringify({
+  const params = {
     client_id: clientId,
     grant_type: "authorization_code",
-    code: code,
+    code,
     redirect_uri: redirectUri,
     code_verifier: codeVerifier,
-  });
-  console.log("Request data:", requestData);
+  };
 
   try {
-    console.log("Making request to /api/token");
     const response = await request.post(
       `${spotifyAccountURL}/api/token`,
-      requestData,
-      {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      }
+      params,
+      headers
     );
 
     console.log("Token response:", response.data);
+    saveTokenData(response.data);
   } catch (error) {
     console.error("Error fetching token:", error);
   }
@@ -134,5 +138,12 @@ export const logout = async () => {
 };
 
 export const loggedIn = () => {
-  return localStorage.getItem("access_token") === "true";
+  return !!localStorage.getItem("access_token");
 };
+
+// const checkExpiration = async () => {
+//   const expirationTime = localStorage.getItem("expiration_time");
+//   if (expirationTime && new Date().getTime() > expirationTime) {
+//     await requestRefreshToken();
+//   }
+// }
