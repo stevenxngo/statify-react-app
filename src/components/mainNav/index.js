@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import * as client from "../../auth/client";
@@ -11,6 +11,8 @@ function MainNav() {
     { text: "Artists", path: "/artists" },
     { text: "Genres", path: "/genres" },
   ];
+
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const login = async () => {
     try {
@@ -33,18 +35,16 @@ function MainNav() {
   };
 
   return (
-    <div className="navbar">
-      <div className="navbar-links">
-        {links.map((link, index) => (
-          <Link key={index} className="navbar-link" to={link.path}>
-            {link.text}
-          </Link>
-        ))}
-        <Button onClick={login}>Login</Button>
-        <Button onClick={refreshToken}>Refresh Token</Button>
-        <Button onClick={logout}>Logout</Button>
-      </div>
-    </div>
+    <nav>
+      {links.map((link, index) => (
+        <Link key={index} className="navbar-link" to={link.path}>
+          {link.text}
+        </Link>
+      ))}
+      <Button onClick={login}>Login</Button>
+      <Button onClick={refreshToken}>Refresh Token</Button>
+      <Button onClick={logout}>Logout</Button>
+    </nav>
   );
 }
 

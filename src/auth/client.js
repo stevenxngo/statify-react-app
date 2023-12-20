@@ -7,8 +7,7 @@ const request = axios.create({
 const BASE_API = process.env.REACT_APP_API_BASE;
 const clientId = process.env.REACT_APP_CLIENT_ID;
 const redirectUri = process.env.REACT_APP_REDIRECT_URI;
-const scope = "user-top-read user-read-recently-played";
-const spotifyAccountURL = "https://accounts.spotify.com";
+const scope = process.env.REACT_APP_SCOPE;
 
 const generateRandomString = (length) => {
   const possible =
@@ -41,7 +40,7 @@ const buildAuthUrl = (codeChallenge, state) => {
     code_challenge: codeChallenge,
   };
 
-  const authUrl = new URL(`${spotifyAccountURL}/authorize`);
+  const authUrl = new URL("https://accounts.spotify.com/authorize");
   authUrl.search = new URLSearchParams(params).toString();
   return authUrl.toString();
 };
@@ -87,12 +86,12 @@ export const retrieveCode = async () => {
       handleRedirectError("State mismatch");
       return;
     }
-
     window.localStorage.removeItem("state");
     await reqAccessToken(code);
     window.history.replaceState({}, document.title, "/");
   }
 };
+
 export const reqAccessToken = async () => {
   const params = {
     client_id: clientId,
