@@ -4,16 +4,11 @@ const request = axios.create({
   withCredentials: true,
 });
 
+const BASE_API = process.env.REACT_APP_API_BASE;
 const clientId = process.env.REACT_APP_CLIENT_ID;
 const redirectUri = process.env.REACT_APP_REDIRECT_URI;
 const scope = "user-top-read user-read-recently-played";
 const spotifyAccountURL = "https://accounts.spotify.com";
-
-const headers = {
-  headers: {
-    "Content-Type": "application/x-www-form-urlencoded",
-  },
-};
 
 const generateRandomString = (length) => {
   const possible =
@@ -73,77 +68,67 @@ function getURLParams() {
   };
 }
 
-export const retrieveCode = async () => {
-  const { code, state, error } = getURLParams();
-  if (!code || !state) {
-    return;
-  }
-  else if (error) {
-    window.history.replaceState({}, document.title, "/");
-    window.localStorage.removeItem("state");
-    console.log("Error retrieving code:");
-    console.log(error);
-    // throw new Error(error);
-    // TODO: Handle redirect error
-    return;
-  }
-
-  if (state !== window.localStorage.getItem("state")) {
-    window.localStorage.removeItem("state");
-    window.history.replaceState({}, document.title, "/");
-    throw new Error("State mismatch");
-  }
-  window.localStorage.removeItem("state");
-  await requestToken(code);
+const handleRedirectError = (error) => {
   window.history.replaceState({}, document.title, "/");
+  window.localStorage.removeItem("state");
+  console.log(error);
 };
 
-const saveTokenData = (data) => {
-  const { access_token, refresh_token, expires_in } = data;
-  const expirationTime = new Date().getTime() + expires_in * 1000;
-  localStorage.setItem("access_token", access_token);
-  localStorage.setItem("refresh_token", refresh_token);
-  localStorage.setItem("expiration_time", expirationTime);
-}
+export const retrieveCode = async () => {
+  const { code, state, error } = getURLParams();
 
-export const requestToken = async () => {
-  const code = getURLParams().code;
-  const codeVerifier = localStorage.getItem("code_verifier");
+  if (error) {
+    handleRedirectError(error);
+    return;
+  }
 
+  if (code && state) {
+    if (state !== window.localStorage.getItem("state")) {
+      handleRedirectError("State mismatch");
+      return;
+    }
+
+    window.localStorage.removeItem("state");
+    await reqAccessToken(code);
+    window.history.replaceState({}, document.title, "/");
+  }
+};
+export const reqAccessToken = async () => {
   const params = {
     client_id: clientId,
     grant_type: "authorization_code",
-    code,
+    code: getURLParams().code,
     redirect_uri: redirectUri,
-    code_verifier: codeVerifier,
+    code_verifier: localStorage.getItem("code_verifier"),
   };
 
   try {
-    const response = await request.post(
-      `${spotifyAccountURL}/api/token`,
-      params,
-      headers
-    );
-
+    const response = await request.post(`${BASE_API}/auth/token`, params);
+    window.localStorage.removeItem("code_verifier");
     console.log("Token response:", response.data);
-    saveTokenData(response.data);
-  } catch (error) {
-    console.error("Error fetching token:", error);
+  } catch (err) {
+    // TODO: Handle token error
+    console.error("Error fetching token:", err);
   }
 };
 
 export const logout = async () => {
-  localStorage.clear();
-  window.location.href = redirectUri;
+  try {
+    await request.post(`${BASE_API}/auth/logout`);
+    localStorage.clear();
+    console.log("Logged out successfully");
+    window.location.href = redirectUri;
+  } catch (err) {
+    // TODO: Handle logout error
+    console.log("Error logging out:", err);
+  }
 };
 
-export const loggedIn = () => {
-  return !!localStorage.getItem("access_token");
+export const refreshToken = async () => {
+  try {
+    const response = await request.post(`${BASE_API}/auth/refresh`);
+    console.log("Refresh token response:", response.data);
+  } catch (err) {
+    console.error("Error fetching token:", err);
+  }
 };
-
-// const checkExpiration = async () => {
-//   const expirationTime = localStorage.getItem("expiration_time");
-//   if (expirationTime && new Date().getTime() > expirationTime) {
-//     await requestRefreshToken();
-//   }
-// }

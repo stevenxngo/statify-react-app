@@ -1,17 +1,17 @@
 import React, { useEffect } from "react";
 import { Button } from "react-bootstrap";
-import * as auth from "../server/auth";
+import * as client from "../auth/client";
 
 function Home() {
   useEffect(() => {
     async function retrieveCode() {
-      await auth.retrieveCode();
+      await client.retrieveCode();
     }
     retrieveCode();
   }, []);
 
   const login = async () => {
-    await auth.login();
+    await client.login();
   };
 
   return (

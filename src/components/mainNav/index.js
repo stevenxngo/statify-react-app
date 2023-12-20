@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
-import * as auth from "../../server/auth";
+import * as client from "../../auth/client";
 import "./index.css";
 
 function MainNav() {
@@ -14,14 +14,22 @@ function MainNav() {
 
   const login = async () => {
     try {
-      await auth.login();
+      await client.login();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const refreshToken = async () => {
+    try {
+      await client.refreshToken();
     } catch (err) {
       console.log(err);
     }
   };
 
   const logout = async () => {
-    await auth.logout();
+    await client.logout();
   };
 
   return (
@@ -33,6 +41,7 @@ function MainNav() {
           </Link>
         ))}
         <Button onClick={login}>Login</Button>
+        <Button onClick={refreshToken}>Refresh Token</Button>
         <Button onClick={logout}>Logout</Button>
       </div>
     </div>
