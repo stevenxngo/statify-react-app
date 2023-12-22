@@ -1,18 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import * as client from "../../auth/client";
+import { isLoggedIn } from "../../services/userServices";
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser, logoutUser } from "../../reducers/userReducer";
+import Login from "../Login";
 import "./index.css";
 
 function MainNav() {
-  const links = [
-    { text: "Home", path: "/" },
-    { text: "Tracks", path: "/tracks" },
-    { text: "Artists", path: "/artists" },
-    { text: "Genres", path: "/genres" },
-  ];
-
+  const dispatch = useDispatch();
   const [loggedIn, setLoggedIn] = useState(false);
+  const reducerLoggedIn = useSelector((state) => state.userReducer.loggedIn);
 
   const login = async () => {
     try {
@@ -32,7 +31,24 @@ function MainNav() {
 
   const logout = async () => {
     await client.logout();
+    dispatch(logoutUser());
+    setLoggedIn(false);
   };
+
+  useEffect(() => {
+    async function fetchAccount() {
+      const res = await isLoggedIn();
+      setLoggedIn(res);
+    }
+    fetchAccount();
+  }, []);
+
+  const links = [
+    { text: "Home", path: "/" },
+    { text: "Tracks", path: "/tracks" },
+    { text: "Artists", path: "/artists" },
+    { text: "Genres", path: "/genres" },
+  ];
 
   return (
     <nav>
@@ -41,9 +57,19 @@ function MainNav() {
           {link.text}
         </Link>
       ))}
-      <Button onClick={login}>Login</Button>
-      <Button onClick={refreshToken}>Refresh Token</Button>
-      <Button onClick={logout}>Logout</Button>
+      {reducerLoggedIn || loggedIn ? (
+        <span>
+          <Button onClick={refreshToken}>Refresh Token</Button>
+          <Button onClick={logout}>Logout</Button>
+        </span>
+      ) : (
+        <Button onClick={login}>Login</Button>
+      )}
+      <p>
+        {reducerLoggedIn ? "Logged in from reducer" : "Not logged in from reducer"}
+        <br />
+        {loggedIn ? "Logged in from state" : "Not logged in from state"}
+      </p>
     </nav>
   );
 }

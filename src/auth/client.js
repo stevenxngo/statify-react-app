@@ -83,12 +83,18 @@ export const retrieveCode = async () => {
 
   if (code && state) {
     if (state !== window.localStorage.getItem("state")) {
+      console.log(
+        `State mismatch: ${state} !== ${window.localStorage.getItem("state")}`
+      );
       handleRedirectError("State mismatch");
       return;
     }
+    console.log(`State match: ${state} === ${window.localStorage.getItem("state")}`);
     window.localStorage.removeItem("state");
     await reqAccessToken(code);
     window.history.replaceState({}, document.title, "/");
+    window.location.reload(true);
+    return true;
   }
 };
 
@@ -105,6 +111,7 @@ export const reqAccessToken = async () => {
     const response = await request.post(`${BASE_API}/auth/token`, params);
     window.localStorage.removeItem("code_verifier");
     console.log("Token response:", response.data);
+    
   } catch (err) {
     // TODO: Handle token error
     console.error("Error fetching token:", err);
