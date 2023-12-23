@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
 
 function TimeNav(props) {
-  const links = props.links;
+  const type = props.type;
+
+  const links = [
+    { text: "last 4 weeks", path: `/${type}/short_term` },
+    { text: "last 6 months", path: `/${type}/medium_term` },
+    { text: "all time", path: `/${type}/long_term` },
+  ];
 
   return (
     <nav>
