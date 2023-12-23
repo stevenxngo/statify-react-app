@@ -14,11 +14,12 @@ export const isLoggedIn = async () => {
   }
 };
 
-export const getAccountData = async () => {
+export const saveAccountData = async () => {
   try {
     const queryURL = `${BASE_API}/user/me`;
     const response = await request.get(queryURL);
-    return response.data;
+    console.log("User data response:", response);
+    // return response.data;
   } catch (err) {
     console.error("Error fetching account data from:", err);
   }
