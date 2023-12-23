@@ -45,7 +45,7 @@ function MainNav() {
   const links = [
     { text: "Tracks", path: "/tracks" },
     { text: "Artists", path: "/artists" },
-    { text: "Genres", path: "/genres" },
+    // { text: "Genres", path: "/genres" },
   ];
 
   return (
