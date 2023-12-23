@@ -1,6 +1,6 @@
 {
-  "short_name": "Statify",
-  "name": "Statify: Top Stats for Spotify",
+  "short_name": "statify",
+  "name": "statify: top stats for spotify",
   "icons": [
     {
       "src": "favicon.ico",
