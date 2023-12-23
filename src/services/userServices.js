@@ -8,7 +8,6 @@ const BASE_API = process.env.REACT_APP_API_BASE;
 export const isLoggedIn = async () => {
   try {
     const response = await request.get(`${BASE_API}/user`);
-    console.log("Logged in status from userServices:", response.data);
     return response.data;
   } catch (err) {
     console.error("Error fetching logged in status:", err);

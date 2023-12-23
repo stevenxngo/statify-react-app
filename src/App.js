@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import store from "./store/store";
 import MainNav from "./components/MainNav";
 import Tracks from "./pages/Tracks";
+import Artists from "./pages/Artists";
 
 function App() {
   useEffect(() => {
@@ -29,10 +30,13 @@ function App() {
               element={<Navigate to="/tracks/short_term" />}
             />
             <Route path="/tracks/:timespan" element={<Tracks />} />
-            {/* <Route path="/artists" element={<Artists />} />
-          <Route path="/artists/:timespan" element={<Artists />} />
-          <Route path="/genres" element={<Genres />} />
-          <Route path="/genres/:timespan" element={<Genres />} /> */}
+            <Route
+              path="/artists"
+              element={<Navigate to="/artists/short_term" />}
+            />
+            <Route path="/artists/:timespan" element={<Artists />} />
+            {/* <Route path="/genres" element={<Genres />} />
+            <Route path="/genres/:timespan" element={<Genres />} /> */}
           </Routes>
         </div>
       </BrowserRouter>

@@ -4,8 +4,7 @@ import { Button } from "react-bootstrap";
 import * as client from "../../auth/client";
 import { isLoggedIn } from "../../services/userServices";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser, logoutUser } from "../../reducers/userReducer";
-import Login from "../Login";
+import { logoutUser } from "../../reducers/userReducer";
 import "./index.css";
 
 function MainNav() {
@@ -44,7 +43,6 @@ function MainNav() {
   }, []);
 
   const links = [
-    { text: "Home", path: "/" },
     { text: "Tracks", path: "/tracks" },
     { text: "Artists", path: "/artists" },
     { text: "Genres", path: "/genres" },
@@ -52,24 +50,40 @@ function MainNav() {
 
   return (
     <nav>
-      {links.map((link, index) => (
-        <Link key={index} className="navbar-link" to={link.path}>
-          {link.text}
-        </Link>
-      ))}
       {reducerLoggedIn || loggedIn ? (
-        <span>
-          <Button onClick={refreshToken}>Refresh Token</Button>
-          <Button onClick={logout}>Logout</Button>
-        </span>
+        <>
+          <Link className="navbar-link" to="/">
+            Home
+          </Link>
+          {links.map((link, index) => (
+            <Link key={index} className="navbar-link" to={link.path}>
+              {link.text}
+            </Link>
+          ))}
+          <span>
+            <Button className="log-btn" onClick={refreshToken}>
+              Refresh Token
+            </Button>
+            <Button className="log-btn" onClick={logout}>
+              Logout
+            </Button>
+          </span>
+        </>
       ) : (
-        <Button onClick={login}>Login</Button>
+        <>
+          <Link className="navbar-link" to="/">
+            Home
+          </Link>
+          {links.map((link, index) => (
+            <Button key={index} className="navbar-link" onClick={login}>
+              {link.text}
+            </Button>
+          ))}
+          <Button className="log-btn" onClick={login}>
+            Login
+          </Button>
+        </>
       )}
-      <p>
-        {reducerLoggedIn ? "Logged in from reducer" : "Not logged in from reducer"}
-        <br />
-        {loggedIn ? "Logged in from state" : "Not logged in from state"}
-      </p>
     </nav>
   );
 }

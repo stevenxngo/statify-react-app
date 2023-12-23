@@ -3,20 +3,12 @@ import { Button } from "react-bootstrap";
 import * as client from "../auth/client";
 import { isLoggedIn } from "../services/userServices";
 import { useDispatch } from "react-redux";
-import { loginUser, logoutUser } from "../reducers/userReducer";
+import { loginUser  } from "../reducers/userReducer";
 import Login from "../components/Login";
 
 function Home() {
   const dispatch = useDispatch();
   const [loggedIn, setLoggedIn] = useState(false);
-
-  const login = async () => {
-    try {
-      await client.login();
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
   useEffect(() => {
     async function retrieveCode() {
@@ -36,9 +28,7 @@ function Home() {
   return (
     <div>
       <h1>Home</h1>
-      {/* {loggedIn ? "Logged in from state" : "Not logged in from state"} */}
-      {!loggedIn && <Button onClick={login}>Login</Button>}
-      {/* <Login /> */}
+      {!loggedIn && <Login />}
     </div>
   );
 }

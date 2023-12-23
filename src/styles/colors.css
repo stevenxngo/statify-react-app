@@ -1,10 +1,10 @@
 :root {
-    --white: #FFFFFF;
-    --black: #191414;
-    --green: #1DB954;
+  --white: #ffffff;
+  --black: #191414;
+  --green: #1db954;
 }
 
 .statify-colors {
-    background-color: var(--black);
-    color: var(--white);
+  background-color: var(--black);
+  color: var(--white);
 }
