@@ -1,6 +1,8 @@
 {
   "short_name": "statify",
   "name": "statify: top stats for spotify",
+  "author": "Steven Ngo",
+  "categories": ["Music", "Statistics", "Spotify"],
   "icons": [
     {
       "src": "favicon.ico",
