@@ -128,12 +128,3 @@ export const logout = async () => {
     console.log("Error logging out:", err);
   }
 };
-
-// export const refreshToken = async () => {
-//   try {
-//     const response = await request.post(`${BASE_API}/auth/refresh`);
-//     console.log("Refresh token response:", response.data);
-//   } catch (err) {
-//     console.error("Error fetching token:", err);
-//   }
-// };
