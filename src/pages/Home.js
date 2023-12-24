@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Button } from "react-bootstrap";
-import * as client from "../auth/client";
 import { isLoggedIn } from "../services/userServices";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../reducers/userReducer";
 import { saveAccountData } from "../services/userServices";
-import Login from "../components/Login";
+import * as client from "../auth/client";
+import HomeCard from "../components/HomeCard";
 
 function Home() {
   const dispatch = useDispatch();
@@ -33,8 +32,7 @@ function Home() {
 
   return (
     <div>
-      <h1>Home</h1>
-      {!loggedIn && <Login />}
+      <HomeCard loggedIn={loggedIn} />
     </div>
   );
 }

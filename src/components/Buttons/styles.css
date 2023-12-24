@@ -1,0 +1,31 @@
+.login-btn {
+  background-color: var(--green);
+  border: 0;
+  /* width: 20%;
+  min-width: 80px;
+  max-width: 200px; */
+  width: 100px;
+}
+
+.link-btn {
+  text-decoration: none !important;
+  /* min-width: 120px; */
+  /* width: 100%; */
+  width: 120px;
+}
+
+.homecard-btn {
+  background-color: var(--green);
+  border: 0;
+  width: 100%;
+  /* min-width: 110px; */
+  /* max-width: 300px; */
+}
+
+.green-btn:hover, .green-btn:active {
+  background-color: var(--dark-green) !important;
+}
+
+.green-btn:active {
+  box-shadow: 0 0 5px 2px rgba(29, 185, 84, 0.5);
+}

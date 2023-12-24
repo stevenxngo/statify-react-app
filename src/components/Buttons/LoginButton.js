@@ -1,8 +1,9 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import * as client from "../../auth/client";
+import "./styles.css";
 
-function Login() {
+function LoginButton() {
   const login = async () => {
     try {
       await client.login();
@@ -13,9 +14,9 @@ function Login() {
 
   return (
     <div>
-      <Button onClick={login}>Login</Button>
+      <Button className="login-btn green-btn" onClick={login}>login</Button>
     </div>
   );
 }
 
-export default Login;
+export default LoginButton;

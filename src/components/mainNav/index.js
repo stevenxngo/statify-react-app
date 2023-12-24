@@ -5,7 +5,7 @@ import * as client from "../../auth/client";
 import { isLoggedIn } from "../../services/userServices";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../../reducers/userReducer";
-import "./index.css";
+import "./styles.css";
 
 function MainNav() {
   const dispatch = useDispatch();
@@ -35,8 +35,8 @@ function MainNav() {
   }, []);
 
   const links = [
-    { text: "Tracks", path: "/tracks" },
-    { text: "Artists", path: "/artists" },
+    { text: "tracks", path: "/tracks" },
+    { text: "artists", path: "/artists" },
     // { text: "Genres", path: "/genres" },
   ];
 
@@ -45,7 +45,7 @@ function MainNav() {
       {reducerLoggedIn || loggedIn ? (
         <>
           <Link className="navbar-link" to="/">
-            Home
+            statify
           </Link>
           {links.map((link, index) => (
             <Link key={index} className="navbar-link" to={link.path}>
@@ -54,14 +54,14 @@ function MainNav() {
           ))}
           <span>
             <Button className="log-btn" onClick={logout}>
-              Logout
+              logout
             </Button>
           </span>
         </>
       ) : (
         <>
           <Link className="navbar-link" to="/">
-            Home
+            statify
           </Link>
           {links.map((link, index) => (
             <Button key={index} className="navbar-link" onClick={login}>
@@ -69,7 +69,7 @@ function MainNav() {
             </Button>
           ))}
           <Button className="log-btn" onClick={login}>
-            Login
+            login
           </Button>
         </>
       )}

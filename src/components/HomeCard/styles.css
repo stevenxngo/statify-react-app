@@ -1,0 +1,16 @@
+.homecard {
+  max-height: 300px;
+  overflow: hidden;
+}
+
+.card-title {
+  font-size: 3em;
+}
+
+.homecard-img {
+  object-fit: cover;
+}
+
+.homecard-body {
+  height: 100% !important;
+}
