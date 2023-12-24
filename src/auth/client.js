@@ -89,7 +89,6 @@ export const retrieveCode = async () => {
       handleRedirectError("State mismatch");
       return;
     }
-    console.log(`State match: ${state} === ${window.localStorage.getItem("state")}`);
     window.localStorage.removeItem("state");
     await reqAccessToken(code);
     window.history.replaceState({}, document.title, "/");
@@ -108,9 +107,9 @@ export const reqAccessToken = async () => {
   };
 
   try {
-    const response = await request.post(`${BASE_API}/auth/token`, params);
+    // const response = await request.post(`${BASE_API}/auth/token`, params);
+    await request.post(`${BASE_API}/auth/token`, params);
     window.localStorage.removeItem("code_verifier");
-    console.log("Token response:", response.data);
     
   } catch (err) {
     // TODO: Handle token error
@@ -130,11 +129,11 @@ export const logout = async () => {
   }
 };
 
-export const refreshToken = async () => {
-  try {
-    const response = await request.post(`${BASE_API}/auth/refresh`);
-    console.log("Refresh token response:", response.data);
-  } catch (err) {
-    console.error("Error fetching token:", err);
-  }
-};
+// export const refreshToken = async () => {
+//   try {
+//     const response = await request.post(`${BASE_API}/auth/refresh`);
+//     console.log("Refresh token response:", response.data);
+//   } catch (err) {
+//     console.error("Error fetching token:", err);
+//   }
+// };

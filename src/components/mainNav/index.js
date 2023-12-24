@@ -20,14 +20,6 @@ function MainNav() {
     }
   };
 
-  const refreshToken = async () => {
-    try {
-      await client.refreshToken();
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   const logout = async () => {
     await client.logout();
     dispatch(logoutUser());
@@ -61,9 +53,6 @@ function MainNav() {
             </Link>
           ))}
           <span>
-            <Button className="log-btn" onClick={refreshToken}>
-              Refresh Token
-            </Button>
             <Button className="log-btn" onClick={logout}>
               Logout
             </Button>
