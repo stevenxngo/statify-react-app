@@ -1,0 +1,4 @@
+.tracks-list a.track-link {
+  text-decoration: none !important;
+  color: var(--green) !important;
+}
