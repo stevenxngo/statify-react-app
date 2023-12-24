@@ -41,14 +41,13 @@ function Tracks() {
         <ListGroup as="ol" numbered className="tracks-list">
           {tracks.map((track) => (
             <a
+              key={track.id}
               href={`https://open.spotify.com/track/${track.id}/`}
               target="_blank"
               rel="noopener noreferrer"
               className="track-link"
             >
-              <ListGroupItem key={track.id} as="li">
-                {track.name}
-              </ListGroupItem>
+              <ListGroupItem as="li">{track.name}</ListGroupItem>
             </a>
           ))}
         </ListGroup>
