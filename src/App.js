@@ -1,13 +1,15 @@
+import { useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { Routes, Route, Navigate } from "react-router";
-import { useEffect } from "react";
-import Home from "./pages/Home";
-import "./styles/colors.css";
 import { Provider } from "react-redux";
-import store from "./store/store";
+import Home from "./pages/Home";
 import MainNav from "./components/MainNav";
 import Tracks from "./pages/Tracks";
 import Artists from "./pages/Artists";
+import store from "./store/store";
+import Footer from "./components/Footer";
+import "./styles/colors.css";
+import "./styles/global.css";
 
 function App() {
   useEffect(() => {
@@ -38,6 +40,7 @@ function App() {
             {/* <Route path="/genres" element={<Genres />} />
             <Route path="/genres/:timespan" element={<Genres />} /> */}
           </Routes>
+          <Footer />
         </div>
       </BrowserRouter>
     </Provider>

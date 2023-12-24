@@ -2,3 +2,16 @@ body {
   /* font-family: 'Proxima Nova Rg', 'Helvetica Neue', 'Arial'; */
   font-family: "Arial";
 }
+
+.clean-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.linkedin-icon {
+  color: #0077b5;
+}
+
+.ig-icon {
+  color: #cd486b;
+}
