@@ -17,8 +17,7 @@ export const isLoggedIn = async () => {
 export const saveAccountData = async () => {
   try {
     const queryURL = `${BASE_API}/user/me`;
-    const response = await request.get(queryURL);
-    console.log("User data response:", response);
+    await request.post(queryURL);
     // return response.data;
   } catch (err) {
     console.error("Error fetching account data from:", err);
