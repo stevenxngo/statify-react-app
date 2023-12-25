@@ -3,6 +3,14 @@
   height: 60px;
 }
 
+.navbar-collapse {
+  background-color: #242424;
+}
+
+.toggle-btn {
+  box-sizing: border-box !important;
+}
+
 .nav-brand,
 .nav-brand:hover,
 .nav-brand:active {
