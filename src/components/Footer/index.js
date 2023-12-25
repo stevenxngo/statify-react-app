@@ -3,7 +3,7 @@ import "./index.css";
 
 function Footer() {
   return (
-    <footer className="text-center mt-md-3 mt-lg-3 mt-xl-3  mt-xxl-3">
+    <footer className="text-center mt-2 mt-md-3 mt-lg-3 mt-xl-3 mt-xxl-3 mb-3">
       <div>
         developed by{" "}
         <a
