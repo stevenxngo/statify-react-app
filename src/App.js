@@ -27,8 +27,6 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Navigate to="/" />} />
-            {/* <Route path="/" element={<Navigate to="/home" />} />
-            <Route path="/home" element={<Home />} /> */}
             <Route
               path="/tracks"
               element={<Navigate to="/tracks/short_term" />}
