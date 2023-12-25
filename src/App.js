@@ -23,7 +23,7 @@ function App() {
     <Provider store={store}>
       <BrowserRouter>
         <MainNav />
-        <div>
+        <div className="page-container">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Navigate to="/" />} />

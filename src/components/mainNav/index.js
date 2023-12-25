@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Button } from "react-bootstrap";
+import { useLocation } from "react-router-dom";
+import { Button, Navbar } from "react-bootstrap";
+import Nav from "react-bootstrap/Nav";
 import * as client from "../../auth/client";
 import { isLoggedIn } from "../../services/userServices";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,6 +10,7 @@ import "./styles.css";
 
 function MainNav() {
   const dispatch = useDispatch();
+  const { pathname } = useLocation();
   const [loggedIn, setLoggedIn] = useState(false);
   const reducerLoggedIn = useSelector((state) => state.userReducer.loggedIn);
 
@@ -41,39 +43,51 @@ function MainNav() {
   ];
 
   return (
-    <nav>
+    <Navbar fixed="top" className="main-nav">
       {reducerLoggedIn || loggedIn ? (
+        // logged in navbar
         <>
-          <Link className="navbar-link" to="/">
+          <Navbar.Brand href="/" className="nav-brand m-3">
             statify
-          </Link>
+          </Navbar.Brand>
           {links.map((link, index) => (
-            <Link key={index} className="navbar-link" to={link.path}>
+            <Nav.Link
+              key={index}
+              className={`nav-link ${pathname.includes(link.text) && "active"}`}
+              href={link.path}
+            >
               {link.text}
-            </Link>
+            </Nav.Link>
           ))}
           <span>
-            <Button className="log-btn" onClick={logout}>
+            <Button as="Nav.Link" className="nav-btn" onClick={logout}>
               logout
             </Button>
           </span>
         </>
       ) : (
+        // logged out navbar
         <>
-          <Link className="navbar-link" to="/">
+          <Navbar.Brand href="/" className="nav-brand m-3">
             statify
-          </Link>
+          </Navbar.Brand>
           {links.map((link, index) => (
-            <Button key={index} className="navbar-link" onClick={login}>
+            <Button
+              key={index}
+              className={`nav-link nav-btn ${
+                pathname.includes(link.text) && "active"
+              }`}
+              onClick={login}
+            >
               {link.text}
             </Button>
           ))}
-          <Button className="log-btn" onClick={login}>
+          <Button className="nav-btn" onClick={login}>
             login
           </Button>
         </>
       )}
-    </nav>
+    </Navbar>
   );
 }
 

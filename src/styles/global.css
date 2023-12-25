@@ -3,6 +3,10 @@ body {
   font-family: "Arial";
 }
 
+.page-container {
+  margin-top: 84px;
+}
+
 .clean-link {
   text-decoration: none;
   color: inherit;

@@ -9,3 +9,11 @@
   background-color: var(--black);
   color: var(--white);
 }
+
+.green {
+  color: var(--green);
+}
+
+.white {
+  color: var(--white);
+}
