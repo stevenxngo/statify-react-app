@@ -3,11 +3,10 @@ import "./index.css";
 
 function Footer() {
   return (
-    <footer className="text-center">
+    <footer className="text-center mt-md-3 mt-lg-3 mt-xl-3  mt-xxl-3">
       <div>
         developed by{" "}
         <a
-          className="footer-link"
           target="_blank"
           rel="noopener noreferrer"
           href="https://www.linkedin.com/in/stevenxngo"
@@ -34,7 +33,6 @@ function Footer() {
       <div>
         follow me on{" "}
         <a
-          className="footer-link"
           target="_blank"
           rel="noopener noreferrer"
           href="https://open.spotify.com/user/a202jrbuwjn17aw171oymxokf"
