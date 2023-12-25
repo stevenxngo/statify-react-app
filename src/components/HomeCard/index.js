@@ -6,33 +6,25 @@ import "./styles.css";
 
 function HomeCard({ loggedIn }) {
   return (
-    <Card className="homecard text-center text-white border-0 my-4 mx-5">
+    <Card className="homecard mx-3 mx-sm-4 mx-md-5 mx-lg-5 mx-xl-5 mx-xxl-5 my-2">
       <Card.Img
         src={homecardimg}
         alt="Spotify Genres"
         className="homecard-img"
       />
-      <Card.ImgOverlay className="d-flex flex-column align-items-center justify-content-center">
-        <div>
-          <Card.Title className="card-title border-0 mt-2">statify</Card.Title>
-          <Card.Body className="homecard-body border-0 d-flex flex-column align-items-center">
-            {loggedIn ? (
-              // <div className="w-100">
-              //   <HomeCardButton variant="tracks" mb={3}/>
-              //   <HomeCardButton variant="artists" />
-              // </div>
-              <>
-                <HomeCardButton variant="tracks" mb={3} />
-                <HomeCardButton variant="artists" />
-              </>
-            ) : (
-              <>
-                <Card.Text className="card-text">login to view more</Card.Text>{" "}
-                <LoginButton />
-              </>
-            )}
-          </Card.Body>
-        </div>
+      <Card.ImgOverlay className="d-flex flex-column align-items-center justify-content-around">
+        <Card.Title>statify</Card.Title>
+        {loggedIn ? (
+            <div className="mb-2 homecard-btns">
+              <HomeCardButton variant="tracks" className="mb-3"/>
+              <HomeCardButton variant="artists" />
+            </div>
+          ) : (
+            <div className="mb-2 d-flex flex-column homecard-btns align-items-center justify-content-center">
+              <Card.Text className="mb-3 homecard-login-text">login to view more</Card.Text>{" "}
+              <LoginButton />
+            </div>
+          )}
       </Card.ImgOverlay>
     </Card>
   );

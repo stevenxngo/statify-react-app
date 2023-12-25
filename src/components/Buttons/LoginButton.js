@@ -13,9 +13,7 @@ function LoginButton() {
   };
 
   return (
-    <div>
-      <Button className="login-btn green-btn" onClick={login}>login</Button>
-    </div>
+    <Button className="homecard-btn green-btn" onClick={login}>login</Button>
   );
 }
 

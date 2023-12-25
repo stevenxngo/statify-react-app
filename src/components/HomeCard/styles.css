@@ -1,6 +1,14 @@
 .homecard {
-  max-height: 300px;
+  color: white;
+  border: 0;
+  max-height: 250px;
   overflow: hidden;
+}
+
+.homecard-btns {
+  min-width: 120px;
+  max-width: 160px;
+  width: 50%;
 }
 
 .card-title {
@@ -13,4 +21,9 @@
 
 .homecard-body {
   height: 100% !important;
+}
+
+.homecard-login-text {
+  text-align: center;
+  font-size: 0.99rem;
 }
