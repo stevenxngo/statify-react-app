@@ -39,50 +39,48 @@ function MainNav() {
   const links = [
     { text: "tracks", path: "/tracks" },
     { text: "artists", path: "/artists" },
-    // { text: "Genres", path: "/genres" },
+    { text: "genres", path: "/genres" },
   ];
 
   return (
-    <Navbar fixed="top" className="main-nav">
+    <Navbar fixed="top" className="main-nav d-flex justify-content-between">
       {reducerLoggedIn || loggedIn ? (
         // logged in navbar
         <>
-          <Navbar.Brand href="/" className="nav-brand m-3">
-            statify
-          </Navbar.Brand>
-          {links.map((link, index) => (
-            <Nav.Link
-              key={index}
-              className={`nav-link ${pathname.includes(link.text) && "active"}`}
-              href={link.path}
-            >
-              {link.text}
-            </Nav.Link>
-          ))}
-          <span>
-            <Button as="Nav.Link" className="nav-btn" onClick={logout}>
-              logout
-            </Button>
-          </span>
+          <Nav className="align-items-center">
+            <Navbar.Brand href="/" className="nav-brand m-3">
+              statify
+            </Navbar.Brand>
+            {links.map((link, index) => (
+              <Nav.Link
+                key={index}
+                className={`nav-link p-2 ${
+                  pathname.includes(link.text) && "active"
+                }`}
+                href={link.path}
+              >
+                {link.text}
+              </Nav.Link>
+            ))}
+          </Nav>
+          <Button as="Nav.Link" className="nav-btn log-btn m-3" onClick={logout}>
+            logout
+          </Button>
         </>
       ) : (
         // logged out navbar
         <>
+        <Nav className="align-items-center">
           <Navbar.Brand href="/" className="nav-brand m-3">
             statify
           </Navbar.Brand>
           {links.map((link, index) => (
-            <Button
-              key={index}
-              className={`nav-link nav-btn ${
-                pathname.includes(link.text) && "active"
-              }`}
-              onClick={login}
-            >
+            <Button key={index} className="nav-btn p-2" onClick={login}>
               {link.text}
             </Button>
           ))}
-          <Button className="nav-btn" onClick={login}>
+          </Nav>
+          <Button className="nav-btn log-btn m-3" onClick={login}>
             login
           </Button>
         </>
