@@ -54,7 +54,7 @@ function MainNav() {
             {links.map((link, index) => (
               <Nav.Link
                 key={index}
-                className={`nav-link p-2 ${
+                className={`nav-link p-2 mx-1 ${
                   pathname.includes(link.text) && "active"
                 }`}
                 href={link.path}
@@ -75,7 +75,7 @@ function MainNav() {
             statify
           </Navbar.Brand>
           {links.map((link, index) => (
-            <Button key={index} className="nav-btn p-2" onClick={login}>
+            <Button key={index} className="nav-link nav-btn p-2 mx-1" onClick={login}>
               {link.text}
             </Button>
           ))}
