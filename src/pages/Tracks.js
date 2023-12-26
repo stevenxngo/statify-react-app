@@ -36,8 +36,8 @@ function Tracks() {
 
   return (
     <div>
-      <Container className="d-flex">
-        <h1 className="justi tracks-page-title">tracks</h1>
+      <Container className="d-flex justify-content-center">
+        <h1 className="tracks-page-title">tracks</h1>
       </Container>
       <TimeNav type={"tracks"} />
       {fetchingData ? (
