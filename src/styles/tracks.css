@@ -1,5 +1,6 @@
 .track-item {
   color: white;
+  /* font-size: 1rem; */
   background-color: var(--nav-gray);
   border-radius: 0;
   border: 0;
@@ -18,6 +19,23 @@
 
 .spotify-icon {
   font-size: 24px;
+}
+
+.square-image-container {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-top: 100%;
+  overflow: hidden;
+}
+
+.square-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 @media screen and (max-width: 577px) {
