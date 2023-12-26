@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { Button, Navbar, Nav } from "react-bootstrap";
+import { Button, Nav } from "react-bootstrap";
 import "./styles.css";
 
 function NavLinks({ isLoggedIn, login }) {
@@ -14,12 +14,6 @@ function NavLinks({ isLoggedIn, login }) {
 
   return (
     <Nav className="align-items-center">
-      <Navbar.Brand
-        href="/"
-        className="nav-brand m-0 m-sm-3 m-md-3 m-lg-3 m-xl-3 m-xxl-3"
-      >
-        statify
-      </Navbar.Brand>
       {links.map((link, index) =>
         isLoggedIn ? (
           <Nav.Link

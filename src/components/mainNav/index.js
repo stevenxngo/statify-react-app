@@ -40,11 +40,17 @@ function MainNav() {
       collapseOnSelect
       expand="sm"
       fixed="top"
-      className="main-nav d-flex justify-content-between navbar-dark pt-3 pt-sm-0 pt-md-0 pt-lg-0 pt-xl-0 px-x5 px-xs-0"
+      className="main-nav d-flex justify-content-between navbar-dark pt-0 pb-0 px-0 px-sm-5 px-md-5 px-lg-5 px-xl-5 px-xxl-5"
     >
+      <Navbar.Brand
+        href="/"
+        className="nav-brand m-3 ml-4"
+      >
+        statify
+      </Navbar.Brand>
       <Navbar.Toggle
         aria-controls="responsive-navbar-nav"
-        className="toggle-btn mx-1 mb-2"
+        className="toggle-btn m-3"
       />
       <Navbar.Collapse id="responsive-navbar-nav nav-elements-container nav-links-container pt-1">
         <NavLinks isLoggedIn={reducerLoggedIn || loggedIn} login={login} />

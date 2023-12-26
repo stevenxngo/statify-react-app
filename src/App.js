@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { Routes, Route, Navigate } from "react-router";
 import { Provider } from "react-redux";
+import { Container } from "react-bootstrap";
 import Home from "./pages/Home";
 import MainNav from "./components/MainNav";
 import Tracks from "./pages/Tracks";
@@ -22,26 +23,26 @@ function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <MainNav />
-        <div className="page-container px-x5 px-xs-0">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/home" element={<Navigate to="/" />} />
-            <Route
-              path="/tracks"
-              element={<Navigate to="/tracks/short_term" />}
-            />
-            <Route path="/tracks/:timespan" element={<Tracks />} />
-            <Route
-              path="/artists"
-              element={<Navigate to="/artists/short_term" />}
-            />
-            <Route path="/artists/:timespan" element={<Artists />} />
-            {/* <Route path="/genres" element={<Genres />} />
+          <MainNav />
+          <div className="page-container px-4 px-sm-5 px-md-5 px-lg-5 px-xl-5">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/home" element={<Navigate to="/" />} />
+              <Route
+                path="/tracks"
+                element={<Navigate to="/tracks/short_term" />}
+              />
+              <Route path="/tracks/:timespan" element={<Tracks />} />
+              <Route
+                path="/artists"
+                element={<Navigate to="/artists/short_term" />}
+              />
+              <Route path="/artists/:timespan" element={<Artists />} />
+              {/* <Route path="/genres" element={<Genres />} />
             <Route path="/genres/:timespan" element={<Genres />} /> */}
-          </Routes>
-          <Footer />
-        </div>
+            </Routes>
+            <Footer />
+          </div>
       </BrowserRouter>
     </Provider>
   );
