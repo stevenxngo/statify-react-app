@@ -6,6 +6,7 @@ import { saveAccountData } from "../services/userServices";
 import * as client from "../auth/client";
 import HomeCard from "../components/HomeCard";
 
+// TODO: add more info to home page
 function Home() {
   const dispatch = useDispatch();
   const [loggedIn, setLoggedIn] = useState(false);

@@ -7,6 +7,7 @@ import Spinner from "../components/Spinner";
 import { getTop } from "../services/userServices";
 import "../styles/tracks.css";
 
+// TODO: refactor with Tracks.js
 function Artists() {
   const { timespan } = useParams();
   const [fetchingData, setFetchingData] = useState(true);

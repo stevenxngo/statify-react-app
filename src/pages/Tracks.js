@@ -7,6 +7,7 @@ import Spinner from "../components/Spinner";
 import { FaSpotify } from "react-icons/fa";
 import "../styles/tracks.css";
 
+// TODO: refactor with Artists.js
 function Tracks() {
   const { timespan } = useParams();
   const [fetchingData, setFetchingData] = useState(true);
