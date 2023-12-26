@@ -1,0 +1,43 @@
+.track-item {
+  color: white;
+  background-color: var(--nav-gray);
+  border-radius: 0;
+  border: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.other-track-img {
+  height: 72px !important;
+}
+
+.track-rank {
+  font-size: 1.75rem;
+}
+
+.spotify-icon {
+  font-size: 24px;
+}
+
+@media screen and (max-width: 577px) {
+  .track-item {
+    font-size: 0.6rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    padding-left: 5px;
+    padding-right: 0;
+  }
+
+  .other-track-img {
+    height: 40px !important;
+  }
+
+  .track-rank {
+    font-size: 0.75rem;
+  }
+
+  .spotify-icon {
+    font-size: 16px;
+  }
+}

@@ -6,7 +6,7 @@
 }
 
 .navbar-collapse {
-  background-color: #242424;
+  background-color: var(--nav-gray);
 }
 
 .toggle-btn {
