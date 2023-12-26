@@ -1,6 +1,8 @@
 .main-nav {
   background-color: #242424;
   height: 72px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .navbar-collapse {

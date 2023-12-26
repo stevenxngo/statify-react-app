@@ -40,11 +40,11 @@ function MainNav() {
       collapseOnSelect
       expand="sm"
       fixed="top"
-      className="main-nav d-flex justify-content-between navbar-dark pt-0 pb-0 px-0 px-sm-5 px-md-5 px-lg-5 px-xl-5 px-xxl-5"
+      className="main-nav navbar-dark pt-0 pb-0 px-0 px-sm-5 px-md-5 px-lg-5 px-xl-5 px-xxl-5"
     >
       <Navbar.Brand
         href="/"
-        className="nav-brand m-3 ml-4"
+        className="nav-brand m-3 ml-4 pl-2 pl-sm-0 pl-md-0 pl-lg-0 pl-xl-0 pl-xxl-0"
       >
         statify
       </Navbar.Brand>
