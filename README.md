@@ -50,5 +50,5 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ![Home page](/assets/anon_home.png)
 ![Top tracks page](/assets/desktop_tracks.png)
 ![Top artists page](/assets/desktop_artists.png)
-![Mobile home page](/assets/loggedin_mobile_home.png)
-![Mobile top tracks page](/assets/mobile_tracks.png)
+<img src="/assets/loggedin_mobile_home.png" alt="Logged in mobile home page" width="300">
+<img src="/assets/mobile_tracks.png" alt="Mobile top tracks page" width="300">
