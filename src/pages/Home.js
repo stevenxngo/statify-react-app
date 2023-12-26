@@ -28,7 +28,7 @@ function Home() {
     }
     retrieveCode();
     fetchAccount();
-  }, []);
+  }, [dispatch]);
 
   return (
     <HomeCard loggedIn={loggedIn} />
