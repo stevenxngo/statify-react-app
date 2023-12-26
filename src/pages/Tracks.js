@@ -54,9 +54,17 @@ function Tracks() {
                   className="img-fluid"
                 />
                 <ListGroup className="">
-                  <ListGroupItem className="rounded-0 track-item pb-0">{`${
-                    index + 1
-                  }. ${track.name}`}</ListGroupItem>
+                  <ListGroupItem className="rounded-0 track-item pb-0">
+                    {`${index + 1}. ${track.name}`}
+                    <a
+                      href={`https://open.spotify.com/track/${track.id}/`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="white ms-1"
+                    >
+                      <FaSpotify />
+                    </a>
+                  </ListGroupItem>
                   <ListGroupItem className="rounded-0 track-item">
                     {track.artists.map((artist) => artist.name).join(", ")}
                   </ListGroupItem>

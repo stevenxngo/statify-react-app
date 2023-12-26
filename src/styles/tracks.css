@@ -38,6 +38,12 @@
   object-fit: cover;
 }
 
+.other-img-square {
+  width: 72px;
+  object-fit: cover;
+  height: 100%;
+}
+
 @media screen and (max-width: 577px) {
   .track-item {
     font-size: 0.6rem;
@@ -49,6 +55,12 @@
 
   .other-track-img {
     height: 40px !important;
+  }
+
+  .other-img-square {
+    width: 40px !important;
+    object-fit: cover;
+    height: 100%;
   }
 
   .track-rank {

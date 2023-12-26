@@ -54,9 +54,17 @@ function Artists() {
                   />
                 </div>
                 <ListGroup className="">
-                  <ListGroupItem className="rounded-0 track-item">{`${
-                    index + 1
-                  }. ${artist.name}`}</ListGroupItem>
+                  <ListGroupItem className="rounded-0 track-item">
+                    {`${index + 1}. ${artist.name}`}
+                    <a
+                      href={`https://open.spotify.com/artist/${artist.id}/`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="white ms-1"
+                    >
+                      <FaSpotify />
+                    </a>
+                  </ListGroupItem>
                 </ListGroup>
               </Col>
             ))}
@@ -76,7 +84,7 @@ function Artists() {
                   <img
                     src={artist.images[0].url}
                     alt={artist.name}
-                    className="img-fluid other-track-img px-0"
+                    className="img-fluid other-track-img px-0 other-img-square"
                     style={{
                       width: "72px",
                       objectFit: "cover",
