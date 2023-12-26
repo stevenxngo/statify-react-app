@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
-import { ListGroup, ListGroupItem } from "react-bootstrap";
+import { ListGroup, ListGroupItem, Container, Row, Col } from "react-bootstrap";
 import TimeNav from "../components/TimeNav";
 import { getTop } from "../services/userServices";
+import Spinner from "../components/Spinner";
 import "../styles/tracks.css";
 
 function Tracks() {
@@ -35,24 +36,57 @@ function Tracks() {
 
   return (
     <div>
+      <Container className="d-flex">
+        <h1 className="justi tracks-page-title">tracks</h1>
+      </Container>
       <TimeNav type={"tracks"} />
-      <h1>Tracks</h1>
       {fetchingData ? (
-        <p>Fetching data...</p>
+        <Spinner />
       ) : (
-        <ListGroup as="ol" numbered className="tracks-list">
-          {tracks.map((track) => (
-            <a
-              key={track.id}
-              href={`https://open.spotify.com/track/${track.id}/`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="track-link"
-            >
-              <ListGroupItem as="li">{track.name}</ListGroupItem>
-            </a>
+        <div>
+          <Row>
+            {tracks.slice(0, 3).map((track, index) => (
+              <Col key={track.id} md={4} className="text-center mb-3">
+                <img
+                  src={track.images[0].url}
+                  alt={track.name}
+                  className="img-fluid"
+                />
+                <ListGroup className="mt-2">
+                  <ListGroupItem as="h5">{`#${index + 1} ${
+                    track.name
+                  }`}</ListGroupItem>
+                  <ListGroupItem>
+                    {track.artists.map((artist) => artist.name).join(", ")}
+                  </ListGroupItem>
+                </ListGroup>
+              </Col>
+            ))}
+          </Row>
+
+          {tracks.slice(3).map((track, index) => (
+            <Row key={track.id} className="mb-3">
+              <Col md={1} className="text-center">
+                {index + 4}
+              </Col>
+              <Col md={5}>
+                <a
+                  href={`https://open.spotify.com/track/${track.id}/`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="track-link"
+                >
+                  <ListGroupItem as="h5">{track.name}</ListGroupItem>
+                </a>
+              </Col>
+              <Col md={6}>
+                <ListGroupItem>
+                  {track.artists.map((artist) => artist.name).join(", ")}
+                </ListGroupItem>
+              </Col>
+            </Row>
           ))}
-        </ListGroup>
+        </div>
       )}
     </div>
   );

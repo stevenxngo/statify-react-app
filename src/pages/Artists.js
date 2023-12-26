@@ -32,10 +32,10 @@ function Artists() {
 
   return (
     <div>
+      <h1>artists</h1>
       <TimeNav type={"artists"} />
-      <h1>Artists</h1>
       {fetchingData ? (
-        <p>Fetching data...</p>
+        <p>fetching data...</p>
       ) : (
         <ListGroup as="ol" numbered className="tracks-list">
           {artists.map((artist) => (
