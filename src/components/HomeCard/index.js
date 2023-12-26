@@ -6,7 +6,7 @@ import "./styles.css";
 
 function HomeCard({ loggedIn }) {
   return (
-    <Card className="homecard mx-3 mx-sm-4 mx-md-5 mx-lg-5 mx-xl-5 mx-xxl-5 my-2">
+    <Card className="homecard mt-4 mx-3 mx-sm-0 mx-md-0 mx-lg-0 mx-xl-0">
       <Card.Img
         src={homecardimg}
         alt="Spotify Genres"

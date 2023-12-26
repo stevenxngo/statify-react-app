@@ -31,9 +31,7 @@ function Home() {
   }, []);
 
   return (
-    <div>
-      <HomeCard loggedIn={loggedIn} />
-    </div>
+    <HomeCard loggedIn={loggedIn} />
   );
 }
 
