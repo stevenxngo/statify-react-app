@@ -61,7 +61,7 @@ function Artists() {
                   />
                 </div>
                 <ListGroup className="">
-                  <ListGroupItem className="rounded-0 track-item">
+                  <ListGroupItem className="rounded-0 track-item pb-0">
                     {`${index + 1}. ${artist.name}`}
                     <a
                       href={`https://open.spotify.com/artist/${artist.id}/`}
@@ -71,6 +71,9 @@ function Artists() {
                     >
                       <FaSpotify />
                     </a>
+                  </ListGroupItem>
+                  <ListGroupItem className="rounded-0 track-item">
+                    {artist.genres.map((genre) => genre).join(", ")}
                   </ListGroupItem>
                 </ListGroup>
               </Col>
