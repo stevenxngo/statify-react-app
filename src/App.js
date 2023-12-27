@@ -24,7 +24,7 @@ function App() {
     <Provider store={store}>
       <BrowserRouter>
         <MainNav />
-        <div className="page-container px-4 px-sm-5 px-md-5 px-lg-5 px-xl-5">
+        <div className="page-container px-4 px-sm-5">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Navigate to="/" />} />
