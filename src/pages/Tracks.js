@@ -48,7 +48,13 @@ function Tracks() {
         <div className="mt-3">
           <Row className="justify-content-center">
             {tracks.slice(0, 3).map((track, index) => (
-              <Col key={track.id} xs={4} sm={3} className="text-center mb-3">
+              <Col
+                key={track.id}
+                xs={4}
+                sm={4}
+                md={3}
+                className="text-center mb-3"
+              >
                 <img
                   src={track.images[0].url}
                   alt={track.name}
@@ -78,10 +84,11 @@ function Tracks() {
             <Row
               key={track.id}
               className="align-items-center justify-content-center mb-1"
-              noGutters
             >
               <Col xs={1} className="text-center px-0 ">
-                <p className="track-rank align-items-center">{index + 4}</p>
+                <p className="track-rank align-items-center mb-0">
+                  {index + 4}
+                </p>
               </Col>
               <Col xs="auto" className="text-center px-0">
                 <img

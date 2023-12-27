@@ -46,7 +46,13 @@ function Artists() {
         <div className="mt-3">
           <Row className="justify-content-center">
             {artists.slice(0, 3).map((artist, index) => (
-              <Col key={artist.id} xs={4} sm={3} className="text-center mb-3">
+              <Col
+                key={artist.id}
+                xs={4}
+                sm={4}
+                md={3}
+                className="text-center mb-3"
+              >
                 <div className="square-image-container">
                   <img
                     src={artist.images[0].url}
@@ -75,10 +81,11 @@ function Artists() {
             <Row
               key={artist.id}
               className="align-items-center justify-content-center mb-1"
-              noGutters
             >
               <Col xs={1} className="text-center px-0 ">
-                <p className="track-rank align-items-center">{index + 4}</p>
+                <p className="track-rank align-items-center mb-0">
+                  {index + 4}
+                </p>
               </Col>
               <Col xs="auto" className="text-center px-0">
                 <div className="">
