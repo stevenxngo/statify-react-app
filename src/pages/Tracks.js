@@ -10,7 +10,7 @@ import "../styles/tracks.css";
 // TODO: refactor with Artists.js
 function Tracks() {
   const { timespan } = useParams();
-  const [fetchingData, setFetchingData] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [tracks, setTracks] = useState([]);
 
   const mapTracks = (tracks) => {
@@ -27,11 +27,11 @@ function Tracks() {
 
   useEffect(() => {
     const fetchTracks = async () => {
-      setFetchingData(true);
+      setLoading(true);
       const response = await getTop("tracks", timespan);
       const tracks = mapTracks(response.items);
       setTracks(tracks);
-      setFetchingData(false);
+      setLoading(false);
     };
     fetchTracks();
   }, [timespan]);
@@ -42,7 +42,7 @@ function Tracks() {
         <h1 className="tracks-page-title">tracks</h1>
       </Container>
       <TimeNav type={"tracks"} />
-      {fetchingData ? (
+      {loading ? (
         <Spinner />
       ) : (
         <div className="mt-3">
@@ -59,6 +59,7 @@ function Tracks() {
                   src={track.images[0].url}
                   alt={track.name}
                   className="img-fluid"
+                  loading="lazy"
                 />
                 <ListGroup className="">
                   <ListGroupItem className="rounded-0 track-item pb-0">
@@ -96,6 +97,7 @@ function Tracks() {
                   alt={track.name}
                   className="img-fluid other-track-img px-0"
                   style={{ height: "100%" }}
+                  loading="lazy"
                 />
               </Col>
               <Col xs={8} className="px-0">

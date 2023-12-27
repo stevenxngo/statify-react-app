@@ -10,7 +10,7 @@ import "../styles/tracks.css";
 // TODO: refactor with Tracks.js
 function Artists() {
   const { timespan } = useParams();
-  const [fetchingData, setFetchingData] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [artists, setArtists] = useState([]);
 
   const mapArtists = (artists) => {
@@ -25,11 +25,11 @@ function Artists() {
 
   useEffect(() => {
     const fetchArtists = async () => {
-      setFetchingData(true);
+      setLoading(true);
       const response = await getTop("artists", timespan);
       const artists = mapArtists(response.items);
       setArtists(artists);
-      setFetchingData(false);
+      setLoading(false);
     };
     fetchArtists();
   }, [timespan]);
@@ -40,7 +40,7 @@ function Artists() {
         <h1 className="tracks-page-title">artists</h1>
       </Container>
       <TimeNav type={"artists"} />
-      {fetchingData ? (
+      {loading ? (
         <Spinner />
       ) : (
         <div className="mt-3">
@@ -58,6 +58,7 @@ function Artists() {
                     src={artist.images[0].url}
                     alt={artist.name}
                     className="img-fluid square-image"
+                    loading="lazy"
                   />
                 </div>
                 <ListGroup className="">
@@ -101,6 +102,7 @@ function Artists() {
                       objectFit: "cover",
                       height: "100%",
                     }}
+                    loading="lazy"
                   />
                 </div>
               </Col>

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { isLoggedIn } from "../services/userServices";
+import { isLoggedIn, saveAccountData } from "../services/userServices";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../reducers/userReducer";
-import { saveAccountData } from "../services/userServices";
 import * as client from "../auth/client";
 import HomeCard from "../components/HomeCard";
 import HomeInfo from "../components/HomeInfo";
