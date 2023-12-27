@@ -5,8 +5,8 @@ import { loginUser } from "../reducers/userReducer";
 import { saveAccountData } from "../services/userServices";
 import * as client from "../auth/client";
 import HomeCard from "../components/HomeCard";
+import HomeInfo from "../components/HomeInfo";
 
-// TODO: add more info to home page
 function Home() {
   const dispatch = useDispatch();
   const [loggedIn, setLoggedIn] = useState(false);
@@ -32,7 +32,10 @@ function Home() {
   }, [dispatch]);
 
   return (
-    <HomeCard loggedIn={loggedIn} />
+    <div>
+      <HomeCard loggedIn={loggedIn} />
+      <HomeInfo />
+    </div>
   );
 }
 
