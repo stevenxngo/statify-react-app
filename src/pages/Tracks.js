@@ -13,24 +13,11 @@ function Tracks() {
   const [loading, setLoading] = useState(true);
   const [tracks, setTracks] = useState([]);
 
-  const mapTracks = (tracks) => {
-    return tracks.map((track) => ({
-      id: track.id,
-      name: track.name,
-      images: track.album.images,
-      artists: track.artists.map((artist) => ({
-        id: artist.id,
-        name: artist.name,
-      })),
-    }));
-  };
-
   useEffect(() => {
     const fetchTracks = async () => {
       setLoading(true);
       const response = await getTop("tracks", timespan);
-      const tracks = mapTracks(response.items);
-      setTracks(tracks);
+      setTracks(response.items);
       setLoading(false);
     };
     fetchTracks();

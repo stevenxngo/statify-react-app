@@ -13,22 +13,11 @@ function Artists() {
   const [loading, setLoading] = useState(true);
   const [artists, setArtists] = useState([]);
 
-  const mapArtists = (artists) => {
-    return artists.map((artist) => ({
-      id: artist.id,
-      name: artist.name,
-      images: artist.images,
-      genres: artist.genres,
-      popularity: artist.popularity,
-    }));
-  };
-
   useEffect(() => {
     const fetchArtists = async () => {
       setLoading(true);
       const response = await getTop("artists", timespan);
-      const artists = mapArtists(response.items);
-      setArtists(artists);
+      setArtists(response.items);
       setLoading(false);
     };
     fetchArtists();
