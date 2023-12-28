@@ -1,5 +1,5 @@
-import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 import "./styles.css";
 
 function HomeCardButton({ variant, className }) {

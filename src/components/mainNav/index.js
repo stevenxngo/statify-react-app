@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Navbar } from "react-bootstrap";
 import * as client from "../../auth/client";
 import { isLoggedIn } from "../../services/userServices";
-import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../../reducers/userReducer";
 import NavLinks from "./NavLinks";
 import NavLoginButton from "./NavLoginButton";

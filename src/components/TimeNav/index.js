@@ -1,5 +1,5 @@
-import { Navbar, Nav } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
+import { Navbar, Nav } from "react-bootstrap";
 import "./styles.css";
 
 function TimeNav(props) {
