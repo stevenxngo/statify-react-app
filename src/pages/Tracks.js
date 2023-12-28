@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router";
 import { Container } from "react-bootstrap";
 import { getTop } from "../services/userServices";
 import TimeNav from "../components/TimeNav";
@@ -11,16 +11,22 @@ function Tracks() {
   const { timespan } = useParams();
   const [loading, setLoading] = useState(true);
   const [tracks, setTracks] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchTracks = async () => {
-      setLoading(true);
-      const response = await getTop("tracks", timespan);
-      setTracks(response.items);
-      setLoading(false);
-    };
-    fetchTracks();
-  }, [timespan]);
+    const timespans = ["short_term", "medium_term", "long_term"];
+    if (timespans.includes(timespan.toLowerCase())) {
+      const fetchTracks = async () => {
+        setLoading(true);
+        const response = await getTop("tracks", timespan);
+        setTracks(response.items);
+        setLoading(false);
+      };
+      fetchTracks();
+    } else {
+      navigate("/tracks");
+    }
+  }, [timespan, navigate]);
 
   return (
     <div>

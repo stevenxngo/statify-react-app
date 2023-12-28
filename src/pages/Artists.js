@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router";
 import { Container } from "react-bootstrap";
 import { getTop } from "../services/userServices";
 import TimeNav from "../components/TimeNav";
@@ -11,16 +11,22 @@ function Artists() {
   const { timespan } = useParams();
   const [loading, setLoading] = useState(true);
   const [artists, setArtists] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchArtists = async () => {
-      setLoading(true);
-      const response = await getTop("artists", timespan);
-      setArtists(response.items);
-      setLoading(false);
-    };
-    fetchArtists();
-  }, [timespan]);
+    const timespans = ["short_term", "medium_term", "long_term"];
+    if (timespans.includes(timespan.toLowerCase())) {
+      const fetchArtists = async () => {
+        setLoading(true);
+        const response = await getTop("artists", timespan);
+        setArtists(response.items);
+        setLoading(false);
+      };
+      fetchArtists();
+    } else {
+      navigate("/artists");
+    }
+  }, [timespan, navigate]);
 
   return (
     <div>
