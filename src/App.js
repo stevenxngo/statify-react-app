@@ -1,13 +1,12 @@
 import { useEffect } from "react";
-import { BrowserRouter } from "react-router-dom";
-import { Routes, Route, Navigate } from "react-router";
 import { Provider } from "react-redux";
+import { Routes, Route, Navigate } from "react-router";
+import { BrowserRouter } from "react-router-dom";
 import Home from "./pages/Home";
 import MainNav from "./components/MainNav";
-import Tracks from "./pages/Tracks";
-import Artists from "./pages/Artists";
-import Genres from "./pages/Genres";
 import store from "./store/store";
+import Data from "./pages/Data";
+import Genres from "./pages/Genres";
 import Footer from "./components/Footer";
 import "./styles/colors.css";
 import "./styles/global.css";
@@ -32,12 +31,15 @@ function App() {
               path="/tracks"
               element={<Navigate to="/tracks/short_term" />}
             />
-            <Route path="/tracks/:timespan" element={<Tracks />} />
+            <Route path="/tracks/:timespan" element={<Data type={"track"} />} />
             <Route
               path="/artists"
               element={<Navigate to="/artists/short_term" />}
             />
-            <Route path="/artists/:timespan" element={<Artists />} />
+            <Route
+              path="/artists/:timespan"
+              element={<Data type={"artist"} />}
+            />
             <Route path="/genres" element={<Genres />} />
             <Route path="/genres/:timespan" element={<Genres />} />
           </Routes>

@@ -7,43 +7,43 @@ import Spinner from "../components/Spinner";
 import TopItems from "../components/Items/TopItems";
 import ListItems from "../components/Items/ListItems";
 
-function Tracks() {
+function Data({ type }) {
   const { timespan } = useParams();
   const [loading, setLoading] = useState(true);
-  const [tracks, setTracks] = useState([]);
+  const [items, setItems] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     const timespans = ["short_term", "medium_term", "long_term"];
     if (timespans.includes(timespan.toLowerCase())) {
-      const fetchTracks = async () => {
+      const fetchItems = async () => {
         setLoading(true);
-        const response = await getTop("tracks", timespan);
-        setTracks(response.items);
+        const response = await getTop(`${type}s`, timespan);
+        setItems(response.items);
         setLoading(false);
       };
-      fetchTracks();
+      fetchItems();
     } else {
-      navigate("/tracks");
+      navigate(`/${type}s`);
     }
-  }, [timespan, navigate]);
+  }, [timespan, navigate, type]);
 
   return (
     <div>
       <Container className="d-flex justify-content-center">
-        <h1>tracks</h1>
+        <h1>{type}s</h1>
       </Container>
-      <TimeNav type={"tracks"} />
+      <TimeNav type={`${type}s`} />
       {loading ? (
         <Spinner />
       ) : (
         <div className="mt-3">
-          <TopItems items={tracks.slice(0, 3)} type={"track"} />
-          <ListItems items={tracks.slice(3)} type={"track"} />
+          <TopItems items={items.slice(0, 3)} type={type} />
+          <ListItems items={items.slice(3)} type={type} />
         </div>
       )}
     </div>
   );
 }
 
-export default Tracks;
+export default Data;
