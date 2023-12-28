@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import MainNav from "./components/MainNav";
 import Data from "./pages/Data";
 import Genres from "./pages/Genres";
+import NotFound from "./pages/NotFound";
 import Footer from "./components/Footer";
 import "./styles/colors.css";
 import "./styles/global.css";
@@ -42,6 +43,7 @@ function App() {
             />
             <Route path="/genres" element={<Genres />} />
             <Route path="/genres/:timespan" element={<Genres />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
         </div>
