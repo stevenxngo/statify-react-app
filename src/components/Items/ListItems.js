@@ -5,13 +5,13 @@ import "./styles.css";
 function ListItems({ items, type }) {
   return (
     <>
-      {items.map((item, index) => (
+      {items.map((item) => (
         <Row
           key={item.id}
           className="align-items-center justify-content-center mb-1"
         >
           <Col xs={1} className="text-center px-0 ">
-            <p className="item-rank align-items-center mb-0">{index + 4}</p>
+            <p className="item-rank align-items-center mb-0">{item.rank + 1}</p>
           </Col>
           <Col xs="auto" className="text-center px-0">
             <img

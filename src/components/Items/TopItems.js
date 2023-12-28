@@ -6,7 +6,7 @@ function TopItems({ items, type }) {
   return (
     <>
       <Row className="justify-content-center">
-        {items.map((item, index) => (
+        {items.map((item) => (
           <Col key={item.id} xs={4} sm={4} md={3} className="text-center mb-3">
             <div className="square-image-container">
               <img
@@ -18,7 +18,7 @@ function TopItems({ items, type }) {
             </div>
             <ListGroup className="">
               <ListGroupItem className="rounded-0 item pb-0">
-                {`${index + 1}. ${item.name}`}
+                {`${item.rank + 1}. ${item.name}`}
                 <a
                   href={
                     type === "track"
