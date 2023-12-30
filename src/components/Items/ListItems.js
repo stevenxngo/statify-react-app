@@ -7,7 +7,7 @@ function ListItems({ items, type }) {
     <>
       {items.map((item) => (
         <Row
-          key={item.id}
+          key={item._id}
           className="align-items-center justify-content-center mb-1"
         >
           <Col xs={1} className="text-center px-0 ">
@@ -35,8 +35,8 @@ function ListItems({ items, type }) {
             <a
               href={
                 type === "track"
-                  ? `https://open.spotify.com/track/${item.id}/`
-                  : `https://open.spotify.com/artist/${item.id}/`
+                  ? `https://open.spotify.com/track/${item._id}/`
+                  : `https://open.spotify.com/artist/${item._idid}/`
               }
               target="_blank"
               rel="noopener noreferrer"

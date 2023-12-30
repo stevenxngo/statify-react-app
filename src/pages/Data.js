@@ -25,7 +25,7 @@ function Data({ type }) {
       const fetchItems = async () => {
         setLoading(true);
         const response = await getTop(`${type}s`, timespan);
-        setItems(response.items);
+        setItems(response);
         setLoading(false);
       };
 
