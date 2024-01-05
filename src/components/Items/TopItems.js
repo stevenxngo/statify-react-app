@@ -7,7 +7,7 @@ function TopItems({ items, type }) {
     <>
       <Row className="justify-content-center">
         {items.map((item) => (
-          <Col key={item._id} xs={4} sm={4} md={3} className="text-center mb-3">
+          <Col key={item.id} xs={4} sm={4} md={3} className="text-center mb-3">
             <div className="square-image-container">
               <img
                 src={item.images[0].url}
@@ -22,8 +22,8 @@ function TopItems({ items, type }) {
                 <a
                   href={
                     type === "track"
-                      ? `https://open.spotify.com/track/${item._id}/`
-                      : `https://open.spotify.com/artist/${item._id}/`
+                      ? `https://open.spotify.com/track/${item.id}/`
+                      : `https://open.spotify.com/artist/${item.id}/`
                   }
                   target="_blank"
                   rel="noopener noreferrer"
