@@ -26,7 +26,6 @@ function Genres() {
         const response = await getTop("genres", timespan);
         setItems(response);
         setLoading(false);
-        console.log(response);
       };
 
       if (timespans.includes(timespan.toLowerCase())) {

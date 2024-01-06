@@ -1,42 +1,71 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
+import "./styles.css";
 
 function GenrePie({ items }) {
   ChartJS.register(ArcElement, Tooltip, Legend);
   const topGenres = items.slice(0, 14);
-  const otherCount = items
-    .slice(10)
-    .reduce((total, genre) => total + genre.count, 0);
+  // const otherCount = items
+  //   .slice(10)
+  //   .reduce((total, genre) => total + genre.count, 0);
 
   const chartData = {
-    labels: [...topGenres.map((genre) => genre.genre), "Other"],
+    labels: [...topGenres.map((genre) => genre.genre)],
     datasets: [
       {
-        data: [...topGenres.map((genre) => genre.count), otherCount],
+        data: [...topGenres.map((genre) => genre.count)],
         backgroundColor: [
-          "rgba(255, 99, 132, 0.6)",
-          "rgba(54, 162, 235, 0.6)",
-          "rgba(255, 206, 86, 0.6)",
-          "rgba(75, 192, 192, 0.6)",
-          "rgba(153, 102, 255, 0.6)",
-          "rgba(255, 159, 64, 0.6)",
-          "rgba(255, 99, 132, 0.6)",
-          "rgba(54, 162, 235, 0.6)",
-          "rgba(255, 206, 86, 0.6)",
-          "rgba(75, 192, 192, 0.6)",
-          "rgba(255, 99, 132, 0.6)",
-          "rgba(54, 162, 235, 0.6)",
-          "rgba(255, 206, 86, 0.6)",
-          "rgba(75, 192, 192, 0.6)",
-          "rgba(128, 128, 128, 0.6)", // "Other" color
+          "#ffa600",
+          "#ff6361",
+          "#bc5090",
+          "#58508d",
+          "#003f5c",
+          "#ff7c43",
+          "#ffbb00",
+          "#ff005e",
+          "#8338ec",
+          "#3a86ff",
+          "#8ac926",
+          "#ff2e63",
+          "#ffcc29",
+          "#d90429",
+          "#2F4F4F",
         ],
       },
     ],
   };
+
+  const options = {
+    responsive: true,
+    maintainAspectRatio: false,
+    layout: {
+      padding: {
+        left: 5,
+        right: 5,
+        top: 10,
+        bottom: 10,
+      },
+    },
+    plugins: {
+      legend: {
+        display: true,
+        position: "top",
+        labels: {
+          maxWidth: 150,
+        },
+      },
+    },
+  };
+
   return (
-    <div>
-      <h2>Top 10 Genres</h2>
-      <Pie data={chartData} />
+    <div className="chart-container">
+      <Pie
+        data={chartData}
+        options={options}
+        className="d-flex "
+        width={600}
+        height={600}
+      />
     </div>
   );
 }
