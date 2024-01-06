@@ -18,7 +18,6 @@ export const saveAccountData = async () => {
   try {
     const queryURL = `${BASE_API}/user/me`;
     await request.post(queryURL);
-    // return response.data;
   } catch (err) {
     console.error("Error fetching account data from:", err);
   }
@@ -28,7 +27,6 @@ export const getTop = async (type, timeRange) => {
   try {
     const queryURL = `${BASE_API}/user/top/${type}/${timeRange}`;
     const response = await request.get(queryURL);
-    console.log("Top response: ", response.data);
     return response.data;
   } catch (err) {
     console.error(`Error fetching top ${type} for ${timeRange}:`, err);

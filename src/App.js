@@ -41,7 +41,10 @@ function App() {
               path="/artists/:timespan"
               element={<Data type={"artist"} />}
             />
-            <Route path="/genres" element={<Genres />} />
+            <Route
+              path="/genres"
+              element={<Navigate to="/genres/short_term" />}
+            />
             <Route path="/genres/:timespan" element={<Genres />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
