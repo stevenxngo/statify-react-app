@@ -38,7 +38,7 @@ A React app that uses the Spotify API to display your top artists and tracks. Ma
 ## Usage
 
 1. Click the "login" button to log in with your Spotify account.
-2. Click the "top artists" or "top tracks" button to display your top artists or tracks, respectively.
+2. Click the "top artists", "top tracks" or "top genres" button to display your top artists, tracks and genres, respectively.
 3. Click the "logout" button to log out of your Spotify account.
 
 ## License
@@ -50,5 +50,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ![Home page](/assets/anon_home.png)
 ![Top tracks page](/assets/desktop_tracks.png)
 ![Top artists page](/assets/desktop_artists.png)
+![Top genres page](/assets/desktop_genres.png)
 <img src="/assets/loggedin_mobile_home.png" alt="Logged in mobile home page" width="300">
-<img src="/assets/mobile_tracks.png" alt="Mobile top tracks page" width="300">
+<img src="/assets/mobile_tracks.png" alt="Mobile tracks page" width="300">
+<img src="/assets/mobile_genres.png" alt="Mobile genres page" width="300">
