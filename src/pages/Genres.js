@@ -4,6 +4,7 @@ import { isLoggedIn, getTop } from "../services/userServices";
 import { Container } from "react-bootstrap";
 import TimeNav from "../components/TimeNav";
 import Spinner from "../components/Spinner";
+import GenrePie from "../components/GenrePie";
 
 function Genres() {
   const { timespan } = useParams();
@@ -44,7 +45,11 @@ function Genres() {
         <h1>genres</h1>
       </Container>
       <TimeNav type={"genres"} />
-      {loading ? <Spinner /> : <div className="mt-3">genres found</div>}
+      {loading && items.length > 0 ? (
+        <Spinner />
+      ) : (
+        <GenrePie items={items}/>
+      )}
     </div>
   );
 }
