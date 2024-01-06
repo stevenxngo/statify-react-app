@@ -1,9 +1,0 @@
-.nav-fill {
-  flex: 1;
-}
-
-@media screen and (max-width: 575px) {
-  .time-link {
-    font-size: 0.8rem;
-  }
-}
