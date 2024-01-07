@@ -2,7 +2,9 @@
 
 A React app that uses the Spotify API to display your top artists and tracks. Made in conjunction with a [Node.js backend](https://github.com/stevenxngo/statify-node-app) and compatible with both desktop and mobile devices.
 
-<iframe width="560" height="315" src="https://studio.youtube.com/video/BU8HIEu2OBM/edit" frameborder="0" allowfullscreen></iframe>
+## Video Demo
+
+[![Local Demo Video](/assets/anon_home.png)](http://www.youtube.com/watch?v=BU8HIEu2OBM "Video Title")
 
 ## Getting Started
 
