@@ -24,8 +24,8 @@ A React app that uses the Spotify API to display your top artists and tracks. Ma
 3. Create a `.env` file in the root directory and add the following:
    ```sh
    REACT_APP_CLIENT_ID=your_client_id
-   REACT_APP_REDIRECT_URI=your_redirect_uri
-   REACT_APP_API_BASE=your_api_base
+   REACT_APP_REDIRECT_URI=http://localhost:3000/statify-react-app #or your frontend URI, must be the same as the one in your Spotify Developer dashboard
+   REACT_APP_API_BASE=http://localhost:4000/api # or your backend URI
    REACT_APP_SCOPE = "user-top-read user-read-recently-played"
    ```
 4. Start the app
