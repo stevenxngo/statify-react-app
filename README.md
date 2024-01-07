@@ -4,7 +4,7 @@ A React app that uses the Spotify API to display your top artists and tracks. Ma
 
 ## Video Demo
 
-[![Local Demo Video](/assets/video_thumbnail.jpeg)](http://www.youtube.com/watch?v=BU8HIEu2OBM "Video Title")
+[![Local Demo Video](/assets/video_thumbnail.jpeg)](https://youtu.be/I43MqGtmV60 "Demo Video")
 
 ## Getting Started
 
@@ -41,9 +41,15 @@ A React app that uses the Spotify API to display your top artists and tracks. Ma
 
 ## Usage
 
-1. Click the "login" button to log in with your Spotify account.
-2. Click the "top artists", "top tracks" or "top genres" button to display your top artists, tracks and genres, respectively.
-3. Click the "logout" button to log out of your Spotify account.
+1. Click the _login_ button to log in with your Spotify account.
+2. Click the _top artists_, _top tracks_ or _top genres_ button to display your top artists, tracks and genres, respectively.
+3. Click the _logout_ button to log out of your Spotify account.
+
+## Future Plans
+
+- Add a _recently played_ page
+- Add history to top tracks, artists and genres pages
+- Deploy the React app to a hosting service (likely Github Pages, hence the project name _/statify-react-app_ being included in the base URL) and the Node.js backend to a server
 
 ## License
 

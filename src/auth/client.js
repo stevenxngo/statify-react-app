@@ -76,10 +76,6 @@ const handleRedirectError = (error) => {
 export const retrieveCode = async () => {
   const { code, state, error } = getURLParams();
 
-  console.log("code: ", code);
-  console.log("state: ", state);
-  console.log("error: ", error);
-
   if (error) {
     console.log("Error authorizing with Spotify:", error);
     handleRedirectError(error);
@@ -96,7 +92,7 @@ export const retrieveCode = async () => {
     }
     window.localStorage.removeItem("state");
     await reqAccessToken(code);
-    window.history.replaceState({}, document.title, "/");
+    window.history.replaceState({}, document.title, "/statify-react-app");
     window.location.reload(true);
     return true;
   }
