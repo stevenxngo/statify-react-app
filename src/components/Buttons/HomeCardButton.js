@@ -4,7 +4,7 @@ import "./styles.css";
 
 function HomeCardButton({ variant, className }) {
   return (
-    <Link to={variant} className={`d-flex justify-content-center link-btn ${className}`}>
+    <Link to={`/statify-react-app/${variant}`} className={`d-flex justify-content-center link-btn ${className}`}>
       <Button className="green-btn homecard-btn">top {variant}</Button>
     </Link>
   );

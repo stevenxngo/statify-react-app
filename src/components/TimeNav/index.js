@@ -7,9 +7,9 @@ function TimeNav(props) {
   const type = props.type;
 
   const links = [
-    { text: "last 4 weeks", path: `/${type}/short_term`, key: "short_term" },
-    { text: "last 6 months", path: `/${type}/medium_term`, key: "medium_term" },
-    { text: "all time", path: `/${type}/long_term`, key: "long_term" },
+    { text: "last 4 weeks", path: `/statify-react-app/${type}/short_term`, key: "short_term" },
+    { text: "last 6 months", path: `/statify-react-app/${type}/medium_term`, key: "medium_term" },
+    { text: "all time", path: `/statify-react-app/${type}/long_term`, key: "long_term" },
   ];
 
   return (

@@ -68,7 +68,7 @@ function getURLParams() {
 }
 
 const handleRedirectError = (error) => {
-  window.history.replaceState({}, document.title, "/");
+  window.history.replaceState({}, document.title, "/statify-react-app");
   window.localStorage.removeItem("state");
   console.log(error);
 };
@@ -76,7 +76,12 @@ const handleRedirectError = (error) => {
 export const retrieveCode = async () => {
   const { code, state, error } = getURLParams();
 
+  console.log("code: ", code);
+  console.log("state: ", state);
+  console.log("error: ", error);
+
   if (error) {
+    console.log("Error authorizing with Spotify:", error);
     handleRedirectError(error);
     return;
   }

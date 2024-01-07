@@ -17,7 +17,7 @@ function Genres() {
     const fetchData = async () => {
       const loggedIn = await isLoggedIn();
       if (!loggedIn) {
-        navigate("/");
+        navigate("/statify-react-app");
         return;
       }
 
@@ -31,7 +31,7 @@ function Genres() {
       if (timespans.includes(timespan.toLowerCase())) {
         fetchItems();
       } else {
-        navigate("/genres");
+        navigate("/statify-react-app/genres");
       }
     };
 

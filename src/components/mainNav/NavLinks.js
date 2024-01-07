@@ -7,9 +7,9 @@ function NavLinks({ isLoggedIn, login }) {
   const { pathname } = useLocation();
 
   const links = [
-    { text: "tracks", path: "/tracks" },
-    { text: "artists", path: "/artists" },
-    { text: "genres", path: "/genres" },
+    { text: "tracks", path: "/statify-react-app/tracks" },
+    { text: "artists", path: "/statify-react-app/artists" },
+    { text: "genres", path: "/statify-react-app/genres" },
   ];
 
   return (

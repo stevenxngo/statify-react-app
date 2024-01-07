@@ -26,26 +26,27 @@ function App() {
         <MainNav />
         <div className="page-container px-4 px-sm-5">
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/home" element={<Navigate to="/" />} />
+            <Route path="/" element={<Navigate to="/statify-react-app" />} />
+            <Route path="/statify-react-app" element={<Home />} />
+            <Route path="/statify-react-app/home" element={<Navigate to="/" />} />
             <Route
-              path="/tracks"
-              element={<Navigate to="/tracks/short_term" />}
+              path="/statify-react-app/tracks"
+              element={<Navigate to="/statify-react-app/tracks/short_term" />}
             />
-            <Route path="/tracks/:timespan" element={<Data type={"track"} />} />
+            <Route path="/statify-react-app/tracks/:timespan" element={<Data type={"track"} />} />
             <Route
-              path="/artists"
-              element={<Navigate to="/artists/short_term" />}
+              path="/statify-react-app/artists"
+              element={<Navigate to="/statify-react-app/artists/short_term" />}
             />
             <Route
-              path="/artists/:timespan"
+              path="/statify-react-app/artists/:timespan"
               element={<Data type={"artist"} />}
             />
             <Route
-              path="/genres"
-              element={<Navigate to="/genres/short_term" />}
+              path="/statify-react-app/genres"
+              element={<Navigate to="/statify-react-app/genres/short_term" />}
             />
-            <Route path="/genres/:timespan" element={<Genres />} />
+            <Route path="/statify-react-app/genres/:timespan" element={<Genres />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />

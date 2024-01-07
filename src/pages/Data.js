@@ -18,7 +18,7 @@ function Data({ type }) {
     const fetchData = async () => {
       const loggedIn = await isLoggedIn();
       if (!loggedIn) {
-        navigate("/");
+        navigate("/statify-react-app");
         return;
       }
 
