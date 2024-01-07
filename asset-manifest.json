@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/statify-react-app/static/css/main.0c127435.css",
-    "main.js": "/statify-react-app/static/js/main.b1fe9923.js",
+    "main.js": "/statify-react-app/static/js/main.ad360648.js",
     "static/media/homecard.jpg": "/statify-react-app/static/media/homecard.13dc8849868fcb908b42.jpg",
     "index.html": "/statify-react-app/index.html",
     "main.0c127435.css.map": "/statify-react-app/static/css/main.0c127435.css.map",
-    "main.b1fe9923.js.map": "/statify-react-app/static/js/main.b1fe9923.js.map"
+    "main.ad360648.js.map": "/statify-react-app/static/js/main.ad360648.js.map"
   },
   "entrypoints": [
     "static/css/main.0c127435.css",
-    "static/js/main.b1fe9923.js"
+    "static/js/main.ad360648.js"
   ]
 }
