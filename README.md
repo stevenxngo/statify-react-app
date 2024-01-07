@@ -4,7 +4,7 @@ A React app that uses the Spotify API to display your top artists and tracks. Ma
 
 ## Video Demo
 
-[![Local Demo Video](/assets/anon_home.png)](http://www.youtube.com/watch?v=BU8HIEu2OBM "Video Title")
+[![Local Demo Video](/assets/video_thumbnail.jpeg)](http://www.youtube.com/watch?v=BU8HIEu2OBM "Video Title")
 
 ## Getting Started
 
