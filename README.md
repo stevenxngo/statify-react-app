@@ -1,6 +1,6 @@
 # Statify React app
 
-A React app that uses the Spotify API to display your top artists and tracks. Made in conjunction with a [Node.js backend](https://github.com/stevenxngo/statify-node-app) and compatible with both desktop and mobile devices.
+A React app that uses the Spotify API to display your top artists and tracks. Made with Create React App and in conjunction with a [Node.js backend](https://github.com/stevenxngo/statify-node-app) and compatible with both desktop and mobile devices.
 
 ## Video Demo
 
