@@ -2,6 +2,8 @@
 
 A React app that uses the Spotify API to display your top artists and tracks. Made in conjunction with a [Node.js backend](https://github.com/stevenxngo/statify-node-app) and compatible with both desktop and mobile devices.
 
+<iframe width="560" height="315" src="https://studio.youtube.com/video/BU8HIEu2OBM/edit" frameborder="0" allowfullscreen></iframe>
+
 ## Getting Started
 
 ### Prerequisites
@@ -11,7 +13,7 @@ A React app that uses the Spotify API to display your top artists and tracks. Ma
 - [Premium Spotify account](https://www.spotify.com/us/)
 - [Spotify Developer account](https://developer.spotify.com/dashboard/)
 
-### Installation
+### Local Installation
 
 1. Clone the repo
    ```sh
