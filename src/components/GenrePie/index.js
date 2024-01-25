@@ -5,14 +5,12 @@ import "./styles.css";
 function GenrePie({ items }) {
   ChartJS.register(ArcElement, Tooltip, Legend);
   const topGenres = items.slice(0, 14);
-  // const otherCount = items
-  //   .slice(10)
-  //   .reduce((total, genre) => total + genre.count, 0);
 
   const chartData = {
     labels: [...topGenres.map((genre) => genre.genre)],
     datasets: [
       {
+        label: '# of Artists',
         data: [...topGenres.map((genre) => genre.count)],
         backgroundColor: [
           "#ffa600",
